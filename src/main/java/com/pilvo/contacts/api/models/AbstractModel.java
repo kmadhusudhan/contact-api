@@ -26,4 +26,5 @@ public class AbstractModel implements Serializable {
     private String orderBy;
     private String sortDirection;
     private String searchTerm;
+    private boolean isDeleted;
 }

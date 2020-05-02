@@ -1,10 +1,16 @@
 package com.pilvo.contacts.api.dao;
 
 import com.pilvo.contacts.api.models.Contact;
+import com.pilvo.contacts.api.models.mappers.ContactMapper;
 import org.skife.jdbi.v2.sqlobject.*;
 import org.skife.jdbi.v2.sqlobject.customizers.Define;
+import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
+import org.skife.jdbi.v2.sqlobject.stringtemplate.UseStringTemplate3StatementLocator;
+
 import java.util.List;
 
+@UseStringTemplate3StatementLocator
+@RegisterMapper({ContactMapper.class})
 public interface ContactDAO {
 
     @SqlQuery("select * from contacts where isDeleted=false order by <sortColumn> <order>  LIMIT :limit OFFSET :offset")

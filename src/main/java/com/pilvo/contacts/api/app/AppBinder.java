@@ -4,7 +4,6 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
-import com.olacabs.training.application.bootstrap.DBFactory;
 import com.pilvo.contacts.api.common.Constants;
 import com.pilvo.contacts.api.dao.ContactDAO;
 import com.pilvo.contacts.api.data.services.AbstractDataService;

@@ -74,14 +74,16 @@
             <artifactId>dropwizard-guice</artifactId>
             <version>1.0.6.0</version>
         </dependency>
+
         <dependency>
-            <groupId>com.olacabs.training.application</groupId>
-            <artifactId>trainingapplication</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>antlr</groupId>
+            <artifactId>stringtemplate</artifactId>
+            <version>2.3b6</version>
         </dependency>
+
     </dependencies>
     <build>
-        <finalName>lmsserver</finalName>
+        <finalName>contact-api</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -112,7 +114,7 @@
                                         implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.olacabs.training.application.bootstrap.TrainingApp</mainClass>
+                                    <mainClass>com.pilvo.contacts.api.app.Application</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
