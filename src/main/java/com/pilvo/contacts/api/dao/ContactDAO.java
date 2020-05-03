@@ -38,6 +38,6 @@ public interface ContactDAO {
     @SqlUpdate("update contacts set name=:name,email=:email,phoneNumber=:phoneNumber where id=:id")
     void update(@BindBean Contact contact);
 
-    @SqlUpdate("update contacts set isDeleted=false where id=:id")
+    @SqlUpdate("update contacts set isDeleted=true where id=:id")
     void delete(@Bind("id") long id);
 }

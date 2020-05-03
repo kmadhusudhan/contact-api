@@ -5,6 +5,7 @@ import com.pilvo.contacts.api.exceptions.AbstractException;
 import com.pilvo.contacts.api.models.Contact;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -14,6 +15,7 @@ import javax.ws.rs.core.Response;
 @Path("api/v1/contacts")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@RolesAllowed({ "ADMIN" })
 public class ContactsController extends BaseController {
 
     @POST
@@ -21,6 +23,20 @@ public class ContactsController extends BaseController {
     public Response getAll(@Valid Contact contact) {
         try {
             return this.getHandlerFactory().getHandler(Handler.CONTACT_SERVICE).getAllRecords(contact);
+        } catch (AbstractException e) {
+            log.error("Error while getting contacts =>", e);
+            return this.getExceptionHandler().handle(e);
+        }
+    }
+
+
+    @GET
+    @Path("/{id}")
+    public Response get(@PathParam("id") long id) {
+        try {
+            Contact contact = new Contact();
+            contact.setId(id);
+            return this.getHandlerFactory().getHandler(Handler.CONTACT_SERVICE).getRecord(contact);
         } catch (AbstractException e) {
             log.error("Error while getting contacts =>", e);
             return this.getExceptionHandler().handle(e);

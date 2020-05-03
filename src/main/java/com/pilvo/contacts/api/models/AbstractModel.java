@@ -1,5 +1,6 @@
 package com.pilvo.contacts.api.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class AbstractModel implements Serializable {
     protected Timestamp updatedAt;
 
     private String userToken;
-    private long userID;
+//    private long userID;
 
     //pagination fields
     private long totalSize;

@@ -12,6 +12,7 @@ import com.pilvo.contacts.api.handlers.AbstractHandler;
 import com.pilvo.contacts.api.handlers.ContactsHandler;
 import com.pilvo.contacts.api.response.builder.AbstractResponseBuilder;
 import com.pilvo.contacts.api.response.builder.ContactResponseBuilder;
+import com.pilvo.contacts.api.util.EmailOperations;
 import com.pilvo.contacts.api.validations.AbstractValidation;
 import com.pilvo.contacts.api.validations.ContactsValidator;
 
@@ -31,6 +32,7 @@ public class AppBinder extends AbstractModule  {
         //response builders
         bind(AbstractResponseBuilder.class).annotatedWith(Names.named(Constants.CONTACTS_RESPONSE_BUILDER)).to(ContactResponseBuilder.class);
 
+        bind(EmailOperations.class);
     }
 
     @Provides

@@ -17,4 +17,9 @@ public class Constants {
     //contacts dao
     public static final String CONTACTS_DAO = "CONTACTS_DAO";
 
+
+    //eamil regx
+    public static final String EMAIL_PATTREN =  "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
+            "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
 }

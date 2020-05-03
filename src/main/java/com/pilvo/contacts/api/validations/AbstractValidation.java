@@ -10,7 +10,7 @@ public abstract class AbstractValidation<T extends AbstractModel> {
     DataServiceBuilderFactory dataServiceBuilderFactory;
 
     public abstract T createRecordValidations(T model) throws ValidationFailedException;
-    public abstract T fetchRecordValidations(int id);
-    public abstract void updateRecordValidations(T model);
-    public abstract void deleteRecordValidations(int id);
+    public abstract void fetchRecordValidations(long id) throws ValidationFailedException;
+    public abstract void updateRecordValidations(T model) throws ValidationFailedException;
+    public abstract void deleteRecordValidations(long id) throws ValidationFailedException;
 }

@@ -5,13 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class PaginationResponse<T> {
-    private List<T> items;
-    private  long total;
+@NoArgsConstructor
+@Getter
+@Setter
+public class ContactResponse {
+    long id;
+    private String name;
+    private String email;
+    private String phonenumber;
 }

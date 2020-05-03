@@ -23,6 +23,7 @@ public class ContactsHandler extends AbstractHandler<Contact> {
 
     public Response createRecord(Contact model) throws HandlerNotFoundException {
         try {
+            validatorBuilderFactory.getValidator(Handler.CONTACT_SERVICE).createRecordValidations(model);
             dataServiceBuilderFactory.getService(Handler.CONTACT_SERVICE).createRecord(model);
             return responseBuilderFactory.getResponseBuilder(Handler.CONTACT_SERVICE).buildSuccessResponse();
         }  catch(AbstractException e){
@@ -34,6 +35,7 @@ public class ContactsHandler extends AbstractHandler<Contact> {
 
     public Response getRecord(Contact model) throws HandlerNotFoundException {
         try {
+             validatorBuilderFactory.getValidator(Handler.CONTACT_SERVICE).fetchRecordValidations(model.getId());
              Contact contact =  (Contact) dataServiceBuilderFactory.getService(Handler.CONTACT_SERVICE).fetchRecordById(model.getId());
             return responseBuilderFactory.getResponseBuilder(Handler.CONTACT_SERVICE).buildFetchRecordResponse(contact);
         }  catch(AbstractException e){
@@ -44,6 +46,7 @@ public class ContactsHandler extends AbstractHandler<Contact> {
 
     public Response updateRecord(Contact model) throws HandlerNotFoundException {
         try {
+            validatorBuilderFactory.getValidator(Handler.CONTACT_SERVICE).updateRecordValidations(model);
             dataServiceBuilderFactory.getService(Handler.CONTACT_SERVICE).updateRecord(model);
             return responseBuilderFactory.getResponseBuilder(Handler.CONTACT_SERVICE).buildSuccessResponse();
         }  catch(AbstractException e){
@@ -54,6 +57,7 @@ public class ContactsHandler extends AbstractHandler<Contact> {
 
     public Response deleteRecord(Contact model) throws HandlerNotFoundException {
         try {
+            validatorBuilderFactory.getValidator(Handler.CONTACT_SERVICE).deleteRecordValidations(model.getId());
             dataServiceBuilderFactory.getService(Handler.CONTACT_SERVICE).deleteRecord(model);
             return responseBuilderFactory.getResponseBuilder(Handler.CONTACT_SERVICE).buildSuccessResponse();
         }  catch(AbstractException e){

@@ -10,6 +10,8 @@ import java.sql.SQLException;
 public class ContactMapper implements ResultSetMapper<Contact> {
     public Contact map(int index, ResultSet r, StatementContext ctx) throws SQLException {
         Contact contact = new Contact();
+        contact.setId(r.getLong("id"));
+        contact.setName(r.getString("name"));
         contact.setEmail(r.getString("email"));
         contact.setPhoneNumber(r.getString("phoneNumber"));
         contact.setCreatedAt(r.getTimestamp("createdAT"));

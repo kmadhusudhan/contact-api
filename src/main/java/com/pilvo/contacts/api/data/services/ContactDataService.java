@@ -16,9 +16,15 @@ public class ContactDataService extends AbstractDataService<Contact> {
 
     public PaginationResponse<Contact> getAllRecords(Contact model) {
         PaginationResponse paginationRecords = new PaginationResponse();
+
+        //set pagination default values if they are null or empty
+        if(model.getOrderBy() == null || model.getOrderBy().equals("")) model.setOrderBy("name");
+        if(model.getSortDirection() == null || model.getSortDirection().equals("")) model.setSortDirection("asc");
+        if(model.getLimit() == 0 || model.getLimit() == 0) model.setLimit(10);
+
         List<Contact> contactList;
         long totalCount;
-        if(model.getSearchTerm() == null) {
+        if(model.getSearchTerm() == null || model.getSearchTerm().equals("")) {
             contactList = contactDAO.getAll(model,model.getOrderBy(),model.getSortDirection());
             totalCount = contactDAO.getCount();
         } else {
